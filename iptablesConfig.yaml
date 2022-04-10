@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: "Add Rules to IPtables"
+    ansible.builtin.iptables:
+      action: append
+      chain: "INPUT"
+      comment: "{{ item.comment }}"
+      destination: "{{ item.destination }}"
+        
